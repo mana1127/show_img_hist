@@ -31,7 +31,7 @@ def show_histogram(im):
     hist_blue, _ = np.histogram(im[:, :, 2], bins=64)
     hist = np.stack((hist_red, hist_green, hist_blue), axis=1)
 
-    df_hist = pd.DataFrame(hist, columns=['R', 'G', 'B'])
+    df_hist = pd.DataFrame(hist, columns=['Red', 'Green', 'Blue'])
     st.bar_chart(df_hist)
 
     return hist_red, hist_green, hist_blue
@@ -42,16 +42,16 @@ def show_color_selector(hist_red, hist_green, hist_blue):
     """
 
     color = st.radio(
-        "choose R, G, or B",
-        ('R', 'G', 'B')
+        "choose Red, Green, or Blue",
+        ('Red', 'Green', 'Blue')
     )
-    if color == 'R':
+    if color == 'Red':
         df_hist = pd.DataFrame(hist_red)
         st.bar_chart(df_hist)
-    if color == 'G':
+    if color == 'Green':
         df_hist = pd.DataFrame(hist_green)
         st.bar_chart(df_hist)
-    if color == 'B':
+    if color == 'Blue':
         df_hist = pd.DataFrame(hist_blue)
         st.bar_chart(df_hist)
 
